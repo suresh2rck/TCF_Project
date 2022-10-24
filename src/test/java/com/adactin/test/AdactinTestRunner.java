@@ -16,24 +16,16 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(	
-		plugin= {"pretty","com.cucumber.listener.ExtentCucumberFormatter:src\\test\\resource\\com\\adactin\\reports\\extentreport.html",
-				"html:src\\test\\resource\\com\\adactin\\reports",
-				"json:src\\test\\resource\\com\\adactin\\reports.json",
-				"junit:src\\test\\resource\\com\\adactin\\reports.xml"
-				},
-					features="src\\test\\java\\com\\adactin\\feature",
-					glue="com.adactin.stepdef",
-					tags="@AdactInTesting",
-					strict=true,
-					dryRun=false,
-					monochrome=true
-					)
+@CucumberOptions(plugin = { "com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html" },
+
+		features = "src\\test\\java\\com\\adactin\\feature", 
+		glue = "com.adactin.stepdef", tags = "@AdactInTesting", 
+		strict = true, dryRun = false, monochrome = true)
 
 public class AdactinTestRunner {
-	
+
 	public static WebDriver driver;
-	
+
 	@BeforeClass
 	public static void setUp() throws Throwable {
 		try {
@@ -44,10 +36,11 @@ public class AdactinTestRunner {
 			throw new Exception("Browser Name is Invalid");
 		}
 	}
-	
+
 	@AfterClass
 	public static void driverQuit() {
 		driver.quit();
-		Reporter.loadXMLConfig(new File(System.getProperty("user.dir")+"\\src\\test\\resource\\com\\adactin\\properties\\Extent-config.xml"));
+		Reporter.loadXMLConfig(new File(
+				System.getProperty("user.dir") + "\\src\\test\\resource\\com\\adactin\\properties\\Extent-config.xml"));
 	}
 }

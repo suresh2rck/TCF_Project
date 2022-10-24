@@ -6,7 +6,7 @@ Given User able to launch the application
 When User enter the username 'suresh2rck' in Login Page
 And User enter the password 'QEK8DR' in Login Page
 And User Click the signin Button in Login Page
-Then User Verify the username 'Hello suresh2rck!' displayed in the header
+Then User Verify the username 'Hello suresh2rckk!' displayed in the header
 
 
 
